@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import axe from '../src/assets/portraits/npc_dota_hero_axe.webm';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
           Learn React
         </a>
       </header>
+      <video width="150rem" height="200rem">
+        <source src={axe} type='video/webm'></source>
+      </video>
     </div>
   );
 }
