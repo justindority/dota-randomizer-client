@@ -4,11 +4,6 @@ import "./Login.css"
 
 export const Register = (props) => {
     const [user, setUser] = useState({
-        email: "",
-        firstName: "",
-        lastName: "",
-        isStaff: false,
-        hourlyRate: 0,
         username: "",
         password: ""
     })
@@ -28,7 +23,7 @@ export const Register = (props) => {
                 if (token.token) {
                     localStorage.setItem("dota_token",token.token)
 
-                    navigate("/tabs")
+                    navigate("/random")
                 } else if('False' in token) {
                     window.alert('')
                 }})
@@ -45,7 +40,7 @@ export const Register = (props) => {
     return (
         <main style={{ textAlign: "center" }}>
             <form className="form--login" onSubmit={registerNewUser}>
-                <h1 className="h3 mb-3 font-weight-normal">register an employee for pintpoint</h1>
+                <h1 className="h3 mb-3 font-weight-normal">register for dotarandomizer</h1>
                 <fieldset>
                     <label htmlFor="firstName"> First Name </label>
                     <input onChange={updateUser}
@@ -75,21 +70,6 @@ export const Register = (props) => {
                     <input onChange={updateUser}
                         type="password" id="password" className="form-control"
                         placeholder="Password" required />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="hourlyRate"> Hourly Rate </label>
-                    <input onChange={updateUser}
-                        type="number" id="hourlyRate" className="form-control"
-                        placeholder="Hourly Rate" required />
-                </fieldset>
-                <fieldset>
-                    <input onChange={(evt) => {
-                        const copy = {...user}
-                        copy.isStaff = evt.target.checked
-                        setUser(copy)
-                    }}
-                        type="checkbox" id="isStaff" />
-                    <label htmlFor="email"> This employee is an administrator </label>
                 </fieldset>
                 <fieldset>
                     <button type="submit"> Register </button>

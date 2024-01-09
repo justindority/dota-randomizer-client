@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react"
+//default landing if user is logged in
 
-return(
-    <>
-    {<>
-        <p>True Random</p>
-        <p>Random Strength</p>
-        <p>Random Agility</p>
-        <p>Random Intelligence</p>
-        <p>Random Universal</p>
-        </>
-    }
-    </>
-)
+import { useEffect, useState } from "react"
+import { Link, Navigate, useNavigate } from "react-router-dom"
+
+export const Profiles = () => {
+   return <>
+    <p>list user's profiles</p>
+    <button onClick={()=> Navigate("/profileeditor")}>Create new profile</button>
+
+</> 
+}
+
