@@ -12,7 +12,7 @@ export const AdminViews = () => {
             <Route path="/register" element={<Register />} />
 			<Route path="/randomizer" element={<Randomizer />} />
             <Route path="/profiles" element={<Profiles />} />
-            <Route path="/newProfile" element={<NewProfile />} />
+            <Route path="/newprofile" element={<NewProfile />} />
 
         </Routes>
 	</>

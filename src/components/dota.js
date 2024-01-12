@@ -8,6 +8,7 @@ import { useEffect,useState } from "react"
 import { Randomizer } from "./randomizer/Randomizer.js"
 import { getMe } from "../managers/authManager.js"
 import { Profiles } from "./randomprofiles/profiles.js"
+import { NewProfile } from "./randomprofiles/newprofile.js"
 
 
 
@@ -39,6 +40,7 @@ export const Dota = () => {
 					<Routes>
                     <Route path="/random" element={<Randomizer/>} />
 					<Route path="/profiles" element={<Profiles/>} />
+					<Route path="/newProfile" element={<NewProfile/>} />
 					</Routes>
 				</>
 			</Authorized>
