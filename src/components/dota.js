@@ -9,6 +9,7 @@ import { Randomizer } from "./randomizer/Randomizer.js"
 import { getMe } from "../managers/authManager.js"
 import { Profiles } from "./randomprofiles/profiles.js"
 import { NewProfile } from "./randomprofiles/newprofile.js"
+import { EditProfile } from "./randomprofiles/editprofile.js"
 
 
 
@@ -41,6 +42,7 @@ export const Dota = () => {
                     <Route path="/random" element={<Randomizer/>} />
 					<Route path="/profiles" element={<Profiles/>} />
 					<Route path="/newProfile" element={<NewProfile/>} />
+					<Route path="/editProfile/:ProfileId" element={<EditProfile/>} />
 					</Routes>
 				</>
 			</Authorized>

@@ -1,5 +1,10 @@
-export const getProfiles = (userId) => {
-
+export const getMyProfiles = () => {
+    return fetch("http://localhost:8000/profile?mine", {
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("dota_token")}`
+        }
+    })
+        .then(response => response.json())
 }
 
 export const createProfile = (profile) => {
@@ -15,5 +20,5 @@ export const createProfile = (profile) => {
 }
 
 export const editProfile = (profile) => {
-
+    
 }
