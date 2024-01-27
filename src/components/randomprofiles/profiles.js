@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Link, navigate, useNavigate } from "react-router-dom"
-import { getMyProfiles } from "../../managers/profileManager"
+import { deleteProfile, getMyProfiles } from "../../managers/profileManager"
 
 
 
@@ -24,11 +24,19 @@ export const Profiles = () => {
         navigate(`/editprofile/${e.target.id}`)
     }
 
+    const clickDeleteProfile = (e) => {
+        e.preventDefault()
+        deleteProfile(e.target.id)
+    }
+
+
     return <>
         {
             userProfiles
             ? userProfiles.map(prof => {
-                return <><p>{prof.name}</p><button id={prof.id} onClick={(e)=> clickEditProfile(e)}>edit</button><button>delete</button></>
+                return <><p>{prof.name}</p>
+                <button id={prof.id} onClick={(e)=> clickEditProfile(e)}>edit</button>
+                <button id={prof.id} onClick={(e)=> clickDeleteProfile(e)}>delete</button></>
             })
             :<></>
         }

@@ -42,7 +42,7 @@ export const Dota = () => {
                     <Route path="/random" element={<Randomizer/>} />
 					<Route path="/profiles" element={<Profiles/>} />
 					<Route path="/newProfile" element={<NewProfile/>} />
-					<Route path="/editProfile/:ProfileId" element={<EditProfile/>} />
+					<Route path="/editProfile/:profileId" element={<EditProfile/>} />
 					</Routes>
 				</>
 			</Authorized>
