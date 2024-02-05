@@ -1,5 +1,6 @@
 import { useEffect,useState } from "react"
 import { getMyProfiles } from "../../managers/profileManager"
+import './randomizer.css'
 import { trueRandom, strRandom, agiRandom, intRandom, uniRandom, profileRandom } from "../../managers/randomManager"
 
 //use this as main page to select a random from default or created profiles
@@ -42,11 +43,11 @@ export const Randomizer = () => {
     }
 
     return(
-        <>
+        <><div class="profiles-to-random">
         {
             userProfiles
             ? userProfiles.map(prof => {
-                return <><button onClick={(e)=>profRandomFunc(e)} id={prof.id}>{prof.name}</button></>
+                return <><button onClick={(e)=>profRandomFunc(e)} id={prof.id} class='profile-to-random'>{prof.name}</button></>
             })
             : <></>
         }
@@ -58,6 +59,6 @@ export const Randomizer = () => {
             <button onClick={()=>uniRandomFunc()}>Random Universal</button>
             </>
         }
-        </>
+        </div></>
     )
 }

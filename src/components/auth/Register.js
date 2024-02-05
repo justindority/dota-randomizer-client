@@ -24,8 +24,8 @@ export const Register = (props) => {
                     localStorage.setItem("dota_token",token.token)
 
                     navigate("/random")
-                } else if('False' in token) {
-                    window.alert('')
+                } else if(token === 'Duplicate Username Found') {
+                    window.alert('Duplicate Username Found')
                 }})
             
     }
@@ -41,24 +41,7 @@ export const Register = (props) => {
         <main style={{ textAlign: "center" }}>
             <form className="form--login" onSubmit={registerNewUser}>
                 <h1 className="h3 mb-3 font-weight-normal">register for dotarandomizer</h1>
-                <fieldset>
-                    <label htmlFor="firstName"> First Name </label>
-                    <input onChange={updateUser}
-                           type="text" id="firstName" className="form-control"
-                           placeholder="First Name" required autoFocus />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="lastName"> Last Name </label>
-                    <input onChange={updateUser}
-                           type="text" id="lastName" className="form-control"
-                           placeholder="Last Name" required autoFocus />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="email"> Email address </label>
-                    <input onChange={updateUser}
-                        type="email" id="email" className="form-control"
-                        placeholder="Email address" required />
-                </fieldset>
+
                 <fieldset>
                     <label htmlFor="email"> Username </label>
                     <input onChange={updateUser}

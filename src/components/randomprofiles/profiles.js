@@ -30,7 +30,8 @@ export const Profiles = () => {
     }
 
 
-    return <>
+    return <><br></br><br></br><button onClick={(e)=> clickNewProfile(e)}>Create new profile</button>
+
         {
             userProfiles
             ? userProfiles.map(prof => {
@@ -40,6 +41,5 @@ export const Profiles = () => {
             })
             :<></>
         }
-    <button onClick={(e)=> clickNewProfile(e)}>Create new profile</button>
     </> 
 }

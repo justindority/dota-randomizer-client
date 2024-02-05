@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react"
+import { Navigate, useNavigate } from "react-router"
 import { getHeroes } from "../../managers/heroManager"
 import { createProfile } from "../../managers/profileManager"
 
+
 export const NewProfile = () => {
 
+    const navigate = useNavigate()
     const [heroes, setHeroes] = useState([])
     const [profileState, setProfileState] = useState({
         1:true,
@@ -133,9 +136,26 @@ export const NewProfile = () => {
         "title": ""
         }
     )
+    const [deselector, setDeselector] = useState([1])
 
     useEffect(()=>{
-        getHeroes().then(heroes => setHeroes(heroes))
+        getHeroes().then(heroes => {
+            let agi = []
+            let str = []
+            let uni = []
+            let int = []
+            for (const hero of heroes) {
+                if(hero.attribute === 'agi'){
+                    agi.push(hero)
+                }else if(hero.attribute === 'str'){
+                    str.push(hero)
+                }else if(hero.attribute === 'uni'){
+                    uni.push(hero)
+                }else if(hero.attribute === 'int'){
+                    int.push(hero)
+                }
+            }
+            setHeroes({agi, str, uni, int})})
     }, [])
 
     const changeCheckedHandler = (e) => {
@@ -158,26 +178,99 @@ export const NewProfile = () => {
     const saveNewProfile = () => {
         let copy = {...profileState}
         createProfile(copy)
+        navigate('/profiles')
+    }
+
+    const selectAll = () => {
+        let copy = {...profileState}
+        let count = 1
+        while(count < 144){
+            copy[count] = true
+            count += 1
+        }
+        setProfileState(copy)
+    }
+
+    const deselectAll = () => {
+        let copy = {...profileState}
+        let count = 1
+        while(count < 144){
+            copy[count] = false
+            count += 1
+        }
+        setProfileState(copy)
+
     }
 
 
     return(
-        <>
+        <><br></br><br></br>
+        <button onClick={()=>{selectAll()}}>Select All</button>
+        <button onClick={()=>{deselectAll()}}>Deselect All</button>
+        <br></br><br></br>
+        <label for="title">Title</label> &nbsp;
+        <input value={profileState["title"]} onChange={(e)=>changeTitleHandler(e)} id="title"></input>
+        <br></br><br></br>
         {
-            heroes
-            ? heroes.map(hero => {
+            heroes.str
+            ? heroes.str.map(hero => {
                 return <>
                 { 
                     profileState[hero.id]
-                    ? <><input type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} value={hero?.name} checked/><label for={hero?.name}>{hero?.name}</label><br></br></>
-                    : <><input type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} value={hero?.name}/><label for={hero?.name}>{hero?.name}</label><br></br></>
+                    ? <><div></div><input type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='checked'/><label for={hero?.name}>{hero?.name}</label><img src={hero?.portraiturl}/><br></br></>
+                    : <><div></div><input type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='' /><label for={hero?.name}>{hero?.name}</label><br></br></>
+
                 }</>
                 
             })
             : <></>
         }
-        <label for="title">Title</label>
-        <textarea value={profileState["title"]} onChange={(e)=>changeTitleHandler(e)} id="title"></textarea>
+        <br></br>
+        {
+            heroes.agi
+            ? heroes.agi.map(hero => {
+                return <>
+                { 
+                    profileState[hero.id]
+                    ? <><div></div><input type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='checked'/><label for={hero?.name}>{hero?.name}</label><img src={hero?.portraiturl}/><br></br></>
+                    : <><div></div><input type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='' /><label for={hero?.name}>{hero?.name}</label><br></br></>
+
+                }</>
+                
+            })
+            : <></>
+        }
+        <br></br>
+        {
+            heroes.uni
+            ? heroes.uni.map(hero => {
+                return <>
+                { 
+                    profileState[hero.id]
+                    ? <><div></div><input type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='checked'/><label for={hero?.name}>{hero?.name}</label><img src={hero?.portraiturl}/><br></br></>
+                    : <><div></div><input type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='' /><label for={hero?.name}>{hero?.name}</label><br></br></>
+
+                }</>
+                
+            })
+            : <></>
+        }
+        <br></br>
+        {
+            heroes.int
+            ? heroes.int.map(hero => {
+                return <>
+                { 
+                    profileState[hero.id]
+                    ? <><div></div><input type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='checked'/><label for={hero?.name}>{hero?.name}</label><img src={hero?.portraiturl}/><br></br></>
+                    : <><div></div><input type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='' /><label for={hero?.name}>{hero?.name}</label><br></br></>
+
+                }</>
+                
+            })
+            : <></>
+        }
+
         <button onClick={()=>saveNewProfile()}>Save</button>
         </>
     )

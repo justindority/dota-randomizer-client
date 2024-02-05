@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { getHeroes } from "../../managers/heroManager"
-import { createProfile, getMyProfiles } from "../../managers/profileManager"
+import { createProfile, editProfile, getMyProfiles } from "../../managers/profileManager"
 import { useParams, useNavigate } from "react-router"
 
 export const EditProfile = () => {
@@ -38,6 +38,8 @@ export const EditProfile = () => {
                     }
                 }
             }
+            tempState.title = profile.name
+            tempState.profileId = profile.id
             setProfileState(tempState)
         }
     },[profile])
@@ -64,14 +66,37 @@ export const EditProfile = () => {
         setProfileState(copy)
      }
 
-    const saveNewProfile = () => {
+     const selectAll = () => {
         let copy = {...profileState}
-        createProfile(copy)
+        let count = 1
+        while(count < 144){
+            copy[count] = true
+            count += 1
+        }
+        setProfileState(copy)
+    }
+
+    const deselectAll = () => {
+        let copy = {...profileState}
+        let count = 1
+        while(count < 144){
+            copy[count] = false
+            count += 1
+        }
+        setProfileState(copy)
+
+    }
+
+    const editCurrentProfile = () => {
+        let copy = {...profileState}
+        editProfile(copy)
     }
 
 
     return(
-        <>
+        <><br></br>
+        <button onClick={()=>{selectAll()}}>Select All</button>
+        <button onClick={()=>{deselectAll()}}>Deselect All</button>
         {
             heroes
             ? heroes.map(hero => {
@@ -87,7 +112,7 @@ export const EditProfile = () => {
         }
         <label for="title">Title</label>
         <textarea value={profileState["title"]} onChange={(e)=>changeTitleHandler(e)} id="title"></textarea>
-        <button onClick={()=>saveNewProfile()}>Save</button>
+        <button onClick={()=>editCurrentProfile()}>Save</button>
         </>
     )
 

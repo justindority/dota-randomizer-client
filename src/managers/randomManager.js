@@ -44,7 +44,7 @@ export const uniRandom = () => {
 }
 
 export const profileRandom = (profileId) => {
-    return fetch(`http://localhost:8000/random?prof/${profileId}`, {
+    return fetch(`http://localhost:8000/random/${profileId}`, {
         headers:{
             "Authorization": `Token ${localStorage.getItem("dota_token")}`,
         }

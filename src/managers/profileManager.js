@@ -20,7 +20,7 @@ export const createProfile = (profile) => {
 }
 
 export const editProfile = (profile) => {
-    return fetch("http://localhost:8000/profile", {
+    return fetch(`http://localhost:8000/profile/${profile.profileId}`, {
         method: "PUT",
         headers:{
             "Authorization": `Token ${localStorage.getItem("dota_token")}`,
@@ -28,7 +28,7 @@ export const editProfile = (profile) => {
         },
         body: JSON.stringify(profile)
     })
-        .then(response => response.json())
+        
 }
 
 export const deleteProfile = (profileId) => {
