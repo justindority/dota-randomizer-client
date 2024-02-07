@@ -1,0 +1,92 @@
+.title-label {
+    color: white;
+}
+
+.hero-grid {
+    height: 100%;
+}
+
+.attribute-heroes {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    height: fit-content;
+    margin: 1rem;
+}
+
+.str-agi {
+    display: flex;
+    flex-wrap: wrap;
+    width: 95%;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.int-uni {
+    display: flex;
+    flex-wrap: wrap;
+    width: 95%;
+    justify-content: center;
+}
+
+
+.single-hero {
+    margin-right: .4rem;
+    margin-bottom: .4rem;
+}
+
+.active-hero {
+    filter: brightness(110%);
+}
+
+.inactive-hero {
+    height: 7rem;
+    width: 5.2rem;
+    filter: grayscale(100%) brightness(65%)
+}
+
+img.active-hero {
+    height: 7rem;
+    width: 5.2rem;
+}
+
+img.attribute-icon {
+    height: 3rem;
+    padding-top: 1rem;
+    padding-right: .5rem;
+}
+
+.icon-title {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+}
+
+.attribute-title {
+    color: white;
+    width: fit-content;
+}
+
+.str {
+    display: flex;
+    flex-direction: column;
+    width: 47%;
+
+}
+
+.profile-list {
+    padding: 1rem;
+}
+
+.profile-list-item-title {
+    color: white;
+}
+
+html {
+    background-image:
+    linear-gradient(black, black),
+    url("https://www.itl.cat/pngfile/big/295-2951072_grey-hex-wallpaper-gray-gradient-wallpaper-4k.jpg");
+    background-size: cover;
+    background-blend-mode: saturation;
+
+}

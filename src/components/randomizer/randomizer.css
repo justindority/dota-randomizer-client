@@ -1,9 +1,24 @@
 .profiles-to-random {
     display: flex;
+    flex-direction: column;
+}
+
+.custom-profiles-list {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.default-profiles-list {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
 }
 
 .profile-to-random {
     margin: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
+    width: fit-content;
 }
+

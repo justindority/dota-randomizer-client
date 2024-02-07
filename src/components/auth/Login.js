@@ -37,7 +37,7 @@ export const Login = () => {
     }
 
     return (
-        <main className="container--login">
+        <main className="container-login">
             <section className="login-section">
 
                  
@@ -67,9 +67,9 @@ export const Login = () => {
                     
 
             </section>
-            <section className="link--register">
+            <div className="link-register">
                 <Link to="/register">Not a member yet?</Link>
-            </section>
+            </div>
         </main>
     )
 }

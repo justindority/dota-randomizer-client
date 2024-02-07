@@ -31,15 +31,16 @@ export const Profiles = () => {
 
 
     return <><br></br><br></br><button onClick={(e)=> clickNewProfile(e)}>Create new profile</button>
-
+        <div className="profile-list">
         {
             userProfiles
             ? userProfiles.map(prof => {
-                return <><p>{prof.name}</p>
+                return <><h3 className="profile-list-item-title">{prof.name}</h3>
                 <button id={prof.id} onClick={(e)=> clickEditProfile(e)}>edit</button>
                 <button id={prof.id} onClick={(e)=> clickDeleteProfile(e)}>delete</button></>
             })
             :<></>
         }
+        </div>
     </> 
 }

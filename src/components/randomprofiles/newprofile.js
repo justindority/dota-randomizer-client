@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Navigate, useNavigate } from "react-router"
 import { getHeroes } from "../../managers/heroManager"
 import { createProfile } from "../../managers/profileManager"
+import "./profiles.css"
 
 
 export const NewProfile = () => {
@@ -208,70 +209,107 @@ export const NewProfile = () => {
         <button onClick={()=>{selectAll()}}>Select All</button>
         <button onClick={()=>{deselectAll()}}>Deselect All</button>
         <br></br><br></br>
-        <label for="title">Title</label> &nbsp;
-        <input value={profileState["title"]} onChange={(e)=>changeTitleHandler(e)} id="title"></input>
+        <label className="title-label" for="title">Title</label> &nbsp;
+        <input value={profileState["title"]} onChange={(e)=>changeTitleHandler(e)} id="title"></input>&nbsp;&nbsp;
+        <button onClick={()=>saveNewProfile()}>Save Profile</button>
         <br></br><br></br>
-        {
-            heroes.str
-            ? heroes.str.map(hero => {
-                return <>
-                { 
-                    profileState[hero.id]
-                    ? <><div></div><input type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='checked'/><label for={hero?.name}>{hero?.name}</label><img src={hero?.portraiturl}/><br></br></>
-                    : <><div></div><input type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='' /><label for={hero?.name}>{hero?.name}</label><br></br></>
-
-                }</>
+        <div className="hero-grid">
+            <div className="str-agi">
+                <div className="str">
+                    <div className="icon-title">
+                        <img className="attribute-icon" src="https://static.wikia.nocookie.net/dota2_gamepedia/images/7/7a/Strength_attribute_symbol.png"></img>
+                        <div className="attribute-title"><h2 className="attribute-title">strength</h2></div>
+                    </div>
                 
-            })
-            : <></>
-        }
-        <br></br>
-        {
-            heroes.agi
-            ? heroes.agi.map(hero => {
-                return <>
-                { 
-                    profileState[hero.id]
-                    ? <><div></div><input type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='checked'/><label for={hero?.name}>{hero?.name}</label><img src={hero?.portraiturl}/><br></br></>
-                    : <><div></div><input type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='' /><label for={hero?.name}>{hero?.name}</label><br></br></>
+                    <div className="attribute-heroes">
+                    {
+                        heroes.str
+                        ? heroes.str.map(hero => {
+                            return <div className="single-hero">
+                            { 
+                                profileState[hero.id]
+                                ? <><div></div><input type="checkbox" hidden id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='checked'/><label for={hero?.id}><img className="active-hero" src={hero?.portraiturl}/></label></>
+                                : <><div></div><input type="checkbox" hidden id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='' /><label for={hero?.id}><img className="inactive-hero" src={hero?.portraiturl} /></label></>
 
-                }</>
-                
-            })
-            : <></>
-        }
-        <br></br>
-        {
-            heroes.uni
-            ? heroes.uni.map(hero => {
-                return <>
-                { 
-                    profileState[hero.id]
-                    ? <><div></div><input type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='checked'/><label for={hero?.name}>{hero?.name}</label><img src={hero?.portraiturl}/><br></br></>
-                    : <><div></div><input type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='' /><label for={hero?.name}>{hero?.name}</label><br></br></>
+                            }</div>
+                            
+                        })
+                        : <></>
+                    }</div>
+                </div>
+                <br></br>
+                <div className="str">
+                    <div className="icon-title">
+                        <img className="attribute-icon" src="https://static.wikia.nocookie.net/dota2_gamepedia/images/2/2d/Agility_attribute_symbol.png"></img>
+                        <div className="attribute-title"><h2 className="attribute-title">agility</h2></div>
+                    </div>
+                    <div className="attribute-heroes">
+                    {
+                        heroes.agi
+                        ? heroes.agi.map(hero => {
+                            return <div className="single-hero">
+                            { 
+                                profileState[hero.id]
+                                ? <><div></div><input hidden type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='checked'/><label for={hero?.id}><img className="active-hero" src={hero?.portraiturl}/></label></>
+                                : <><div></div><input hidden type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='' /><label for={hero?.id}><img className="inactive-hero" src={hero?.portraiturl} /></label></>
 
-                }</>
-                
-            })
-            : <></>
-        }
-        <br></br>
-        {
-            heroes.int
-            ? heroes.int.map(hero => {
-                return <>
-                { 
-                    profileState[hero.id]
-                    ? <><div></div><input type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='checked'/><label for={hero?.name}>{hero?.name}</label><img src={hero?.portraiturl}/><br></br></>
-                    : <><div></div><input type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='' /><label for={hero?.name}>{hero?.name}</label><br></br></>
+                            }</div>
+                            
+                        })
+                        : <></>
+                    }</div>
+                </div>
+            </div>
+            <br></br>
+            <div className="int-uni">
+            <div className="str">
+                    <div className="icon-title">
+                        <img className="attribute-icon" src="https://static.wikia.nocookie.net/dota2_gamepedia/images/5/56/Intelligence_attribute_symbol.png"></img>
+                        <div className="attribute-title"><h2 className="attribute-title">intelligence</h2></div>
+                    </div>
+                <div className="attribute-heroes">
+                {
+                    heroes.int
+                    ? heroes.int.map(hero => {
+                        return <div className="single-hero">
+                        { 
+                            profileState[hero.id]
+                            ? <><div></div><input hidden type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='checked'/><label for={hero?.id}><img className="active-hero" src={hero?.portraiturl} /></label><br></br></>
+                            : <><div></div><input hidden type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='' /><label for={hero?.id}><img className="inactive-hero" src={hero?.portraiturl} /></label><br></br></>
 
-                }</>
-                
-            })
-            : <></>
-        }
+                        }</div>
+                        
+                    })
+                    : <></>
+                }</div>
+                </div>
+                <br></br>
+                <div className="str">
+                    <div className="icon-title">
+                        <img className="attribute-icon" src="https://static.wikia.nocookie.net/dota2_gamepedia/images/1/1c/Universal_attribute_symbol.png"></img>
+                        <div className="attribute-title"><h2 className="attribute-title">universal</h2></div>
+                    </div>
+                <div className="attribute-heroes">
+                {
+                    heroes.uni
+                    ? heroes.uni.map(hero => {
+                        return <div className="single-hero">
+                        { 
+                            profileState[hero.id]
+                            ? <><div></div><input hidden type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='checked'/><label for={hero?.id}><img className="active-hero" src={hero?.portraiturl} /></label><br></br></>
+                            : <><div></div><input hidden type="checkbox" id={hero?.id} onClick={(e)=>changeCheckedHandler(e)} checked='' /><label for={hero?.id}><img className="inactive-hero" src={hero?.portraiturl}  /></label><br></br></>
 
-        <button onClick={()=>saveNewProfile()}>Save</button>
+                        }</div>
+                        
+                    })
+                    : <></>
+                }</div>
+                </div>
+            </div>
+        </div>
+        
+
+
         </>
     )
 

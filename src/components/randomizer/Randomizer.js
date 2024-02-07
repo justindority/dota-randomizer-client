@@ -9,33 +9,34 @@ import { trueRandom, strRandom, agiRandom, intRandom, uniRandom, profileRandom }
 export const Randomizer = () => {
 
     const [userProfiles, setUserProfiles] = useState([])
+    const [randomResult, setRandomResult] = useState({})
 
     useEffect(()=>{
         getMyProfiles().then(profiles => setUserProfiles(profiles))
     }, [])
 
     const trueRandomFunc = () => {
-        trueRandom().then(res => randomAlert(res))
+        trueRandom().then(res => setRandomResult(res))
     }
 
     const strRandomFunc = () => {
-        strRandom().then(res => randomAlert(res))
+        strRandom().then(res => setRandomResult(res))
     }
 
     const agiRandomFunc = () => {
-        agiRandom().then(res => randomAlert(res))
+        agiRandom().then(res => setRandomResult(res))
     }
 
     const intRandomFunc = () => {
-        intRandom().then(res => randomAlert(res))
+        intRandom().then(res => setRandomResult(res))
     }
 
     const uniRandomFunc = () => {
-        uniRandom().then(res => randomAlert(res))
+        uniRandom().then(res => setRandomResult(res))
     }
 
     const profRandomFunc = (e) => {
-        profileRandom(e.target.id).then(res => randomAlert(res))
+        profileRandom(e.target.id).then(res => setRandomResult(res))
     }
 
     const randomAlert = (res) => {
@@ -43,22 +44,42 @@ export const Randomizer = () => {
     }
 
     return(
-        <><div class="profiles-to-random">
-        {
-            userProfiles
-            ? userProfiles.map(prof => {
-                return <><button onClick={(e)=>profRandomFunc(e)} id={prof.id} class='profile-to-random'>{prof.name}</button></>
-            })
-            : <></>
-        }
-        {<>
-            <button onClick={()=>trueRandomFunc()}>True Random</button>
-            <button onClick={()=>strRandomFunc()}>Random Strength</button>
-            <button onClick={()=>agiRandomFunc()}>Random Agility</button>
-            <button onClick={()=>intRandomFunc()}>Random Intelligence</button>
-            <button onClick={()=>uniRandomFunc()}>Random Universal</button>
-            </>
-        }
-        </div></>
+        <>
+            <div class="profiles-and-result">
+                <div class="profiles-to-random">
+                    <div class='custom-profiles-list'>
+                    {
+                        userProfiles
+                        ? <h2>Custom Profiles</h2>
+                        : <></>
+                    }
+                    {
+                        userProfiles
+                        ? userProfiles.map(prof => {
+                            return <><button onClick={(e)=>profRandomFunc(e)} id={prof.id} class='profile-to-random'>{prof.name}</button></>
+                        })
+                        : <></>
+                    }
+                    </div>
+                    <h2>Default Profiles</h2>
+                    {
+                        <div class='default-profiles-list'>
+                            <button className="profile-to-random" onClick={()=>trueRandomFunc()}>True Random</button>
+                            <button className="profile-to-random" onClick={()=>strRandomFunc()}>Random Strength</button>
+                            <button className="profile-to-random" onClick={()=>agiRandomFunc()}>Random Agility</button>
+                            <button className="profile-to-random" onClick={()=>intRandomFunc()}>Random Intelligence</button>
+                            <button className="profile-to-random" onClick={()=>uniRandomFunc()}>Random Universal</button>
+                        </div>
+                    }
+                </div>
+                <div className="random-result">
+                    {
+                        randomResult
+                        ? <><h2>You randomed {randomResult.name}</h2><img className="result-pic" src={randomResult.portraiturl}></img></>
+                        : <></>
+                    }
+                </div>
+            </div>
+        </>
     )
 }

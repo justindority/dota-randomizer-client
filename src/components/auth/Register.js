@@ -43,7 +43,7 @@ export const Register = (props) => {
                 <h1 className="h3 mb-3 font-weight-normal">register for dotarandomizer</h1>
 
                 <fieldset>
-                    <label htmlFor="email"> Username </label>
+                    <label htmlFor="email" className=""> Username </label>
                     <input onChange={updateUser}
                         type="text" id="username" className="form-control"
                         placeholder="Username" required />
