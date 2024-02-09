@@ -150,8 +150,8 @@ export const EditProfile = () => {
                 
                     <div className="attribute-heroes">
                     {
-                        heroes.str
-                        ? heroes.str.map(hero => {
+                        heroes?.str
+                        ? heroes?.str.map(hero => {
                             return <div className="single-hero">
                             { 
                                 profileState[hero.id]
@@ -172,8 +172,8 @@ export const EditProfile = () => {
                     </div>
                     <div className="attribute-heroes">
                     {
-                        heroes.agi
-                        ? heroes.agi.map(hero => {
+                        heroes?.agi
+                        ? heroes?.agi.map(hero => {
                             return <div className="single-hero">
                             { 
                                 profileState[hero.id]
@@ -196,8 +196,8 @@ export const EditProfile = () => {
                     </div>
                 <div className="attribute-heroes">
                 {
-                    heroes.int
-                    ? heroes.int.map(hero => {
+                    heroes?.int
+                    ? heroes?.int.map(hero => {
                         return <div className="single-hero">
                         { 
                             profileState[hero.id]
@@ -218,8 +218,8 @@ export const EditProfile = () => {
                     </div>
                 <div className="attribute-heroes">
                 {
-                    heroes.uni
-                    ? heroes.uni.map(hero => {
+                    heroes?.uni
+                    ? heroes?.uni.map(hero => {
                         return <div className="single-hero">
                         { 
                             profileState[hero.id]
