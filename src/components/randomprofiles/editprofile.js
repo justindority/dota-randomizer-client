@@ -27,7 +27,7 @@ export const EditProfile = () => {
     },[profiles])
 
     useEffect(()=>{
-        if(profile.banned && heroes){
+        if(profile.banned && heroes.str){
             let tempState = {}
             let allHeroes = []
             for (const strHero of heroes.str) {
