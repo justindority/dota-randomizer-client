@@ -40,23 +40,23 @@ export const Register = (props) => {
     return (
         <main style={{ textAlign: "center" }}>
             <form className="form--login" onSubmit={registerNewUser}>
-                <h1 className="h3 mb-3 font-weight-normal">register for dotarandomizer</h1>
+                <h1 className="h3 mb-3 register-title font-weight-normal">register for dotarandomizer</h1><br></br>
 
-                <fieldset>
-                    <label htmlFor="email" className=""> Username </label>
+                <div>
+                    <label htmlFor="email" className="register-title"> Username </label>
                     <input onChange={updateUser}
                         type="text" id="username" className="form-control"
                         placeholder="Username" required />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="password"> Password </label>
+                </div>
+                <div>
+                    <label className="register-title" htmlFor="password"> Password </label>
                     <input onChange={updateUser}
                         type="password" id="password" className="form-control"
                         placeholder="Password" required />
-                </fieldset>
-                <fieldset>
-                    <button type="submit"> Register </button>
-                </fieldset>
+                </div>
+                <div>
+                    <button className="button-other" type="submit"> Register </button>
+                </div>
             </form>
         </main>
     )

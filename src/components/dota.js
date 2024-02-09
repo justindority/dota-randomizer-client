@@ -13,6 +13,7 @@ import { EditProfile } from "./randomprofiles/editprofile.js"
 
 
 
+
 export const Dota = () => {
 
 	const [me, setMe] = useState()
@@ -31,6 +32,7 @@ export const Dota = () => {
     },[me])
 
 	return <>
+	
 	<Routes>
         <Route path="/login" element={<Login />} />
 		<Route path="/register" element={<Register />} />

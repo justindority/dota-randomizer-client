@@ -42,7 +42,7 @@ export const Login = () => {
 
                  
                     <p>username</p>
-                        <textarea type="text"
+                        <input type="text"
                             value={username}
                             onChange={evt => setUsername(evt.target.value)}
                             className="input-username"
@@ -51,7 +51,7 @@ export const Login = () => {
                     
                         <br/>
                         <p>password</p>
-                        <textarea type="password"
+                        <input type="password"
                             value={password}
                             onChange={evt => setPass(evt.target.value)}
                             className="form-control"
@@ -60,7 +60,7 @@ export const Login = () => {
                             
                         
                         <br/>
-                        <button color='primary' onClick={handleLogin} type="submit">
+                        <button className="button-other" color='primary' onClick={handleLogin} type="submit">
                             Sign in
                         </button>
                         

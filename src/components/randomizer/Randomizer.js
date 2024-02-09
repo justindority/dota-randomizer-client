@@ -49,33 +49,34 @@ export const Randomizer = () => {
                 <div class="profiles-to-random">
                     <div class='custom-profiles-list'>
                     {
-                        userProfiles
-                        ? <h2>Custom Profiles</h2>
+                        userProfiles[0]
+                        ? <h2 className="profile-category">Custom Profiles</h2>
                         : <></>
                     }
                     {
                         userProfiles
                         ? userProfiles.map(prof => {
-                            return <><button onClick={(e)=>profRandomFunc(e)} id={prof.id} class='profile-to-random'>{prof.name}</button></>
+                            return <><button onClick={(e)=>profRandomFunc(e)} id={prof.id} class='button-other'>{prof.name}</button></>
                         })
                         : <></>
                     }
                     </div>
-                    <h2>Default Profiles</h2>
+                    <br></br>
+                    <h2 className="profile-category">Default Profiles</h2>
                     {
                         <div class='default-profiles-list'>
-                            <button className="profile-to-random" onClick={()=>trueRandomFunc()}>True Random</button>
-                            <button className="profile-to-random" onClick={()=>strRandomFunc()}>Random Strength</button>
-                            <button className="profile-to-random" onClick={()=>agiRandomFunc()}>Random Agility</button>
-                            <button className="profile-to-random" onClick={()=>intRandomFunc()}>Random Intelligence</button>
-                            <button className="profile-to-random" onClick={()=>uniRandomFunc()}>Random Universal</button>
+                            <button className="button-other" onClick={()=>trueRandomFunc()}>True Random</button>
+                            <button className="button-str" onClick={()=>strRandomFunc()}>Random Strength</button>
+                            <button className="button-agi" onClick={()=>agiRandomFunc()}>Random Agility</button>
+                            <button className="button-int" onClick={()=>intRandomFunc()}>Random Intelligence</button>
+                            <button className="button-uni" onClick={()=>uniRandomFunc()}>Random Universal</button>
                         </div>
                     }
                 </div>
                 <div className="random-result">
                     {
-                        randomResult
-                        ? <><h2>You randomed {randomResult.name}</h2><img className="result-pic" src={randomResult.portraiturl}></img></>
+                        randomResult.name
+                        ? <><h2 className='result-text'>You randomed:</h2><br></br><img className="result-pic" src={randomResult.portraiturl}></img><h2 className="result-text">{randomResult.name}</h2></>
                         : <></>
                     }
                 </div>

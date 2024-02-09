@@ -126,15 +126,21 @@ export const EditProfile = () => {
 
     return(
         <>
-        <button onClick={()=>{selectAll()}}>Select All</button>
-        <button onClick={()=>{deselectAll()}}>Deselect All</button>
-        <br></br><br></br>
-        <h2>Editing Profile "{profile['name']}"</h2>
-        <label className="title-label" for="title">Change Title</label> &nbsp;
-        <input value={profileState["title"]} onChange={(e)=>changeTitleHandler(e)} id="title"></input>&nbsp;&nbsp;
-        <button onClick={()=>editCurrentProfile()}>Save Profile</button>
 
         <div className="hero-grid">
+        <div className="title-and-select">
+            <div className="title-and-save">
+                <label className="title-label" for="title">Change Title</label> &nbsp;
+                <input value={profileState["title"]} onChange={(e)=>changeTitleHandler(e)} id="title"></input>&nbsp;&nbsp;
+                <button className="button-agi" onClick={()=>editCurrentProfile()}> Save </button>
+            </div>
+            <div><h2 className="editing-profile-title">Editing Profile "{profile['name']}"</h2></div>
+
+            <div className="select-deselect">
+                <button className="button-other" onClick={()=>{selectAll()}}>Select All</button>
+                <button className="button-other" onClick={()=>{deselectAll()}}>Deselect All</button>
+            </div>
+        </div>
             <div className="str-agi">
                 <div className="str">
                     <div className="icon-title">

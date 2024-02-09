@@ -137,7 +137,6 @@ export const NewProfile = () => {
         "title": ""
         }
     )
-    const [deselector, setDeselector] = useState([1])
 
     useEffect(()=>{
         getHeroes().then(heroes => {
@@ -178,8 +177,21 @@ export const NewProfile = () => {
 
     const saveNewProfile = () => {
         let copy = {...profileState}
-        createProfile(copy)
-        navigate('/profiles')
+        let flag = true
+        for (let i=0;i<123;i++){
+            if(copy[i]){
+                flag = true
+                break
+            }
+            flag = false
+        }
+        if(flag){
+            createProfile(copy)
+            navigate('/profiles')
+        } else {
+            window.alert('Select some heroes!!')
+        }
+
     }
 
     const selectAll = () => {
@@ -205,15 +217,19 @@ export const NewProfile = () => {
 
 
     return(
-        <><br></br><br></br>
-        <button onClick={()=>{selectAll()}}>Select All</button>
-        <button onClick={()=>{deselectAll()}}>Deselect All</button>
-        <br></br><br></br>
-        <label className="title-label" for="title">Title</label> &nbsp;
-        <input value={profileState["title"]} onChange={(e)=>changeTitleHandler(e)} id="title"></input>&nbsp;&nbsp;
-        <button onClick={()=>saveNewProfile()}>Save Profile</button>
-        <br></br><br></br>
+        <>
         <div className="hero-grid">
+        <div className="title-and-select">
+            <div className="title-and-save">
+                <label className="title-label" for="title">Profile Title</label> &nbsp;
+                <input value={profileState["title"]} onChange={(e)=>changeTitleHandler(e)} id="title"></input>&nbsp;&nbsp;
+                <button className="button-agi" onClick={()=>saveNewProfile()}> Save </button>
+            </div>
+            <div className="select-deselect">
+                <button className="button-other" onClick={()=>{selectAll()}}>Select All</button>
+                <button className="button-other" onClick={()=>{deselectAll()}}>Deselect All</button>
+            </div>
+        </div>
             <div className="str-agi">
                 <div className="str">
                     <div className="icon-title">
