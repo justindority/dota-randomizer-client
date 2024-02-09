@@ -56,7 +56,7 @@ export const EditProfile = () => {
             tempState.profileId = profile.id
             setProfileState(tempState)
         }
-    },[profile])
+    },[heroes, profile])
 
 
     useEffect(()=>{
