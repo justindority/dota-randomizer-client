@@ -1,5 +1,5 @@
 export const trueRandom = () => {
-    return fetch("http://localhost:8000/random?true", {
+    return fetch("https://dota-randomizer-server-8bms4.ondigitalocean.app/random?true", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("dota_token")}`
         }
@@ -8,7 +8,7 @@ export const trueRandom = () => {
 }
 
 export const strRandom = () => {
-    return fetch("http://localhost:8000/random?str", {
+    return fetch("https://dota-randomizer-server-8bms4.ondigitalocean.app/random?str", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("dota_token")}`
         }
@@ -17,7 +17,7 @@ export const strRandom = () => {
 }
 
 export const agiRandom = () => {
-    return fetch("http://localhost:8000/random?agi", {
+    return fetch("https://dota-randomizer-server-8bms4.ondigitalocean.app/random?agi", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("dota_token")}`
         }
@@ -26,7 +26,7 @@ export const agiRandom = () => {
 }
 
 export const intRandom = () => {
-    return fetch("http://localhost:8000/random?int", {
+    return fetch("https://dota-randomizer-server-8bms4.ondigitalocean.app/random?int", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("dota_token")}`
         }
@@ -35,7 +35,7 @@ export const intRandom = () => {
 }
 
 export const uniRandom = () => {
-    return fetch("http://localhost:8000/random?uni", {
+    return fetch("https://dota-randomizer-server-8bms4.ondigitalocean.app/random?uni", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("dota_token")}`
         }
@@ -44,7 +44,7 @@ export const uniRandom = () => {
 }
 
 export const profileRandom = (profileId) => {
-    return fetch(`http://localhost:8000/random/${profileId}`, {
+    return fetch(`https://dota-randomizer-server-8bms4.ondigitalocean.app/random/${profileId}`, {
         headers:{
             "Authorization": `Token ${localStorage.getItem("dota_token")}`,
         }

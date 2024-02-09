@@ -1,5 +1,5 @@
 export const getMyProfiles = () => {
-    return fetch("http://localhost:8000/profile?mine", {
+    return fetch("https://dota-randomizer-server-8bms4.ondigitalocean.app/profile?mine", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("dota_token")}`
         }
@@ -8,7 +8,7 @@ export const getMyProfiles = () => {
 }
 
 export const createProfile = (profile) => {
-    return fetch("http://localhost:8000/profile", {
+    return fetch("https://dota-randomizer-server-8bms4.ondigitalocean.app/profile", {
         method: "POST",
         headers:{
             "Authorization": `Token ${localStorage.getItem("dota_token")}`,
@@ -20,7 +20,7 @@ export const createProfile = (profile) => {
 }
 
 export const editProfile = (profile) => {
-    return fetch(`http://localhost:8000/profile/${profile.profileId}`, {
+    return fetch(`https://dota-randomizer-server-8bms4.ondigitalocean.app/profile/${profile.profileId}`, {
         method: "PUT",
         headers:{
             "Authorization": `Token ${localStorage.getItem("dota_token")}`,
@@ -32,7 +32,7 @@ export const editProfile = (profile) => {
 }
 
 export const deleteProfile = (profileId) => {
-    return fetch("http://localhost:8000/profile", {
+    return fetch("https://dota-randomizer-server-8bms4.ondigitalocean.app/profile", {
         method: "DELETE",
         headers:{
             "Authorization": `Token ${localStorage.getItem("dota_token")}`,

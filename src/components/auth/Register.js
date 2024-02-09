@@ -11,7 +11,7 @@ export const Register = (props) => {
 
     const registerNewUser = (event) => {
         event.preventDefault()
-        return fetch("http://localhost:8000/register", {
+        return fetch("https://dota-randomizer-server-8bms4.ondigitalocean.app/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -54,12 +54,14 @@
 
 .active-hero {
     filter: brightness(110%);
+    cursor: pointer;
 }
 
 .inactive-hero {
     height: 7rem;
     width: 5.2rem;
-    filter: grayscale(100%) brightness(65%)
+    filter: grayscale(100%) brightness(65%);
+    cursor: pointer;
 }
 
 img.active-hero {

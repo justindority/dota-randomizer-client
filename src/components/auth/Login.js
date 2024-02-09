@@ -16,7 +16,7 @@ export const Login = () => {
             username: username,
             password: password
         }
-        return fetch('http://localhost:8000/login', {
+        return fetch('https://dota-randomizer-server-8bms4.ondigitalocean.app/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

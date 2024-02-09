@@ -33,7 +33,7 @@ export const Profiles = () => {
     return <><button onClick={(e)=> clickNewProfile(e)} className="button-other" >Create new profile</button>
         <div className="profile-list">
         {
-            userProfiles
+            userProfiles[0]
             ? userProfiles.map(prof => {
                 return <>
                     <div className="single-profile">

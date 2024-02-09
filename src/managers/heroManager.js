@@ -1,5 +1,5 @@
 export const getHeroes = () => {
-    return fetch("http://localhost:8000/heroes", {
+    return fetch("https://dota-randomizer-server-8bms4.ondigitalocean.app/heroes", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("dota_token")}`
         }

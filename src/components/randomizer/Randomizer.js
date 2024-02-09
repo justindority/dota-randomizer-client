@@ -54,7 +54,7 @@ export const Randomizer = () => {
                         : <></>
                     }
                     {
-                        userProfiles
+                        userProfiles[0]
                         ? userProfiles.map(prof => {
                             return <><button onClick={(e)=>profRandomFunc(e)} id={prof.id} class='button-other'>{prof.name}</button></>
                         })
