@@ -27,6 +27,7 @@ export const Profiles = () => {
     const clickDeleteProfile = (e) => {
         e.preventDefault()
         deleteProfile(e.target.id)
+        navigate("/profiles")
     }
 
 
