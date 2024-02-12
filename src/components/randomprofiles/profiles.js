@@ -26,7 +26,7 @@ export const Profiles = () => {
 
     const clickDeleteProfile = (e) => {
         e.preventDefault()
-        deleteProfile(e.target.id).then(()=>navigate("/profiles"))
+        deleteProfile(e.target.id).then(res => window.location.reload(false))
     }
 
 
