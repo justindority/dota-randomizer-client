@@ -26,8 +26,7 @@ export const Profiles = () => {
 
     const clickDeleteProfile = (e) => {
         e.preventDefault()
-        deleteProfile(e.target.id)
-        navigate("/profiles")
+        deleteProfile(e.target.id).then(()=>getMyProfiles().then(profiles => setUserProfiles(profiles)))
     }
 
 
